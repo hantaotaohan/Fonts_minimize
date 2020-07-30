@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Set source and target directories
 powerline_fonts_dir="$( cd "$( dirname "$0" )" && pwd )"
@@ -19,13 +19,12 @@ else
 fi
 
 # Remove all fonts from user fonts directory
-echo "Removing fonts..."
+echo -e "\t\t[#] Removing fonts......\n"
 find "$powerline_fonts_dir" \( -name "$prefix*.[ot]tf" -or -name "$prefix*.pcf.gz" \) -type f -print0 | xargs -n1 -0 -I % sh -c "rm -f \"\$0/\${1##*/}\"" "$font_dir" %
 
 # Reset font cache on Linux
 if which fc-cache >/dev/null 2>&1 ; then
-    echo "Resetting font cache, this may take a moment..."
+    echo -e "\t\t[#] Resetting font cache, this may take a moment......\n"
     fc-cache -f "$font_dir"
 fi
-
-echo "Powerline fonts uninstalled from $font_dir"
+echo -e "\t\t[#] Powerline fonts uninstalled from $font_dir\n"
