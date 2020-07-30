@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Set source and target directories
 powerline_fonts_dir="$( cd "$( dirname "$0" )" && pwd )"
@@ -16,13 +16,14 @@ else
 fi
 
 # Copy all fonts to user fonts directory
-echo "Copying fonts..."
+echo -e "\t\t[#] Copying Fonts......\n"
 find "$powerline_fonts_dir" \( -name "$prefix*.[ot]tf" -or -name "$prefix*.pcf.gz" \) -type f -print0 | xargs -0 -n1 -I % cp "%" "$font_dir/"
 
 # Reset font cache on Linux
 if which fc-cache >/dev/null 2>&1 ; then
-    echo "Resetting font cache, this may take a moment..."
+    echo -e "\t\t[#] Resetting font cache, this may take a moment...\n"
     fc-cache -f "$font_dir"
 fi
 
 echo "Powerline fonts installed to $font_dir"
+echo -e "\t\t[#] Powerline fonts installed to $font_dir\n"
