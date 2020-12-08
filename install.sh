@@ -25,6 +25,5 @@ if which fc-cache >/dev/null 2>&1 ; then
     fc-cache -f "$font_dir"
 fi
 
-echo -e "              [#] Powerline fonts installed to $font_dir\n"
-
 cd $HOME
+echo -e "              [#] Powerline fonts installed to $font_dir\n"
